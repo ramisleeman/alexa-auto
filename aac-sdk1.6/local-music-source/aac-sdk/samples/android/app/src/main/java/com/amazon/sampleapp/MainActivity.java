@@ -95,6 +95,7 @@ import com.amazon.sampleapp.impl.SpeechSynthesizer.SpeechSynthesizerHandler;
 import com.amazon.sampleapp.impl.TemplateRuntime.TemplateRuntimeHandler;
 import com.amazon.sampleapp.logView.LogEntry;
 import com.amazon.sampleapp.logView.LogRecyclerViewAdapter;
+import com.amazon.sampleapp.impl.LocalMediaSource.USBLocalMediaSource;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -173,7 +174,8 @@ public class MainActivity extends AppCompatActivity implements Observer {
     private static final String[] sRequiredPermissions = { Manifest.permission.RECORD_AUDIO,
             Manifest.permission.ACCESS_FINE_LOCATION };
     private MACCPlayer mMACCPlayer;
-
+    
+    private USBLocalMediaSource mUSBLocalMediaSource;
     private CDLocalMediaSource mCDLocalMediaSource;
     private LVEConfigReceiver mLVEConfigReceiver;
     private MenuItem mTapToTalkIcon;
@@ -563,6 +565,12 @@ public class MainActivity extends AppCompatActivity implements Observer {
         if ( !mEngine.registerPlatformInterface(
                 mCDLocalMediaSource = new CDLocalMediaSource(this, mLogger, CDLocalMediaSource.Source.COMPACT_DISC )
         ) ) throw new RuntimeException( "Could not register Mock CD player Local Media Source platform interface" );
+
+
+        mUSBLocalMediaSource =  new USBLocalMediaSource(this, mLogger, USBLocalMediaSource.Source.USB);
+        //register the USB player and throw an exception if not successful 
+        if ( !mEngine.registerPlatformInterface(mUSBLocalMediaSource) )
+        throw new RuntimeException( "Could not register Mock USB player Local Media Source platform interface" );
 
         /* Sample Metrics Code */
 //        // Create and configure MetricsUploadService
