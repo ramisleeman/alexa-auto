@@ -1,0 +1,62 @@
+{
+    "UserAgent": "aws-amplify-cli/0.1.0",
+    "Version": "1.0",
+    "IdentityManager": {
+        "Default": {}
+    },
+    "AppSync": {
+        "Default": {
+            "ApiUrl": "https://ebgg6qxrsfft7fgkl6setg5454.appsync-api.us-east-1.amazonaws.com/graphql",
+            "Region": "us-east-1",
+            "AuthMode": "API_KEY",
+            "ApiKey": "da2-6dfnkeswxnaupjv6fd6umzjgdi",
+            "ClientDatabasePrefix": "android_API_KEY"
+        }
+    },
+    "CredentialsProvider": {
+        "CognitoIdentity": {
+            "Default": {
+                "PoolId": "us-east-1:edd1d81d-0cc6-4131-9fb2-6ffaf07fc2b2",
+                "Region": "us-east-1"
+            }
+        }
+    },
+    "CognitoUserPool": {
+        "Default": {
+            "PoolId": "us-east-1_semS8QOxZ",
+            "AppClientId": "13mduhunand55tk79ff1a2p36t",
+            "AppClientSecret": "h2ublu2m0s81vbqdimdd9lhffr8p507sd6pqq45jitdik12acqe",
+            "Region": "us-east-1"
+        }
+    },
+    "Auth": {
+        "Default": {
+            "OAuth": {
+                "AppClientId": "13mduhunand55tk79ff1a2p36t",
+                "AppClientSecret": "h2ublu2m0s81vbqdimdd9lhffr8p507sd6pqq45jitdik12acqe"
+            }
+        }
+    },
+    "S3TransferUtility": {
+        "Default": {
+            "Bucket": "androidfcd149efa67942ae8dff416f2bd4823e-aa",
+            "Region": "us-east-1"
+        }
+    },
+    "DynamoDBObjectMapper": {
+        "Default": {
+            "Region": "us-east-1"
+        }
+    },
+    "PinpointAnalytics": {
+        "Default": {
+            "AppId": "6de3d0d024b84f2c90ad3dca8121e2f4",
+            "Region": "us-east-1"
+        }
+    },
+    "PinpointTargeting": {
+        "Default": {
+            "Region": "us-east-1"
+        }
+    }
+}
