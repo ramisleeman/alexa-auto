@@ -4,6 +4,8 @@
 
 #### implementation of local music control on top of the Alexa auto SDK
 
+##### Prerequisites: Alexa Auto Android Sample App is already implemented and running per the official instructions:  https://github.com/alexa/aac-sdk
+
 Local Media support includes support for the following sources:
 
    - Source_BLUETOOTH;
