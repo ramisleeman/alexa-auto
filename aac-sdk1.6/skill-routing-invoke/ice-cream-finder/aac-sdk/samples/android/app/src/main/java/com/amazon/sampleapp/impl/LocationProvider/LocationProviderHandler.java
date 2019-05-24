@@ -113,6 +113,12 @@ public class LocationProviderHandler extends LocationProvider implements Locatio
             // null indicates no current available location
             return null;
         }
+         
+        // Added for debugging
+        mLogger.postInfo("Location Debug Info",  Double.toString(mCurrentLocation.getLatitude()));
+        mLogger.postInfo("Location Debug Info",  Double.toString(mCurrentLocation.getLongitude()));
+        mLogger.postInfo("Location Debug Info",  Double.toString(mCurrentLocation.getAltitude()));
+		  
         return new Location(
                 mCurrentLocation.getLatitude(),
                 mCurrentLocation.getLongitude(),

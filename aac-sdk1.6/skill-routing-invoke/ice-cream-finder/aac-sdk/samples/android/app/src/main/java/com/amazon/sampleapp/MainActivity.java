@@ -474,7 +474,7 @@ public class MainActivity extends AppCompatActivity implements Observer {
 
         // Navigation
         if ( !mEngine.registerPlatformInterface(
-                mNavigation = new NavigationHandler( mLogger )
+                mNavigation = new NavigationHandler( this, mLogger )
             )
         ) throw new RuntimeException( "Could not register Navigation platform interface" );
 

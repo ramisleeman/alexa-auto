@@ -22,25 +22,58 @@ import com.amazon.sampleapp.logView.LogRecyclerViewAdapter;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+//Added for setDestinationDirective
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
+import android.content.Context;
+
 public class NavigationHandler extends Navigation {
 
     private static String sTag = "Navigation";
     private LoggerHandler mLogger = null;
+    
+    //Added for setDestinationDirective
+    private Context mContext;
 
-    public NavigationHandler( LoggerHandler logger ) { mLogger = logger; }
+    public NavigationHandler( Context context, LoggerHandler logger ) {
+        mLogger = logger;
+
+        //Added for setDestinationDirective
+        mContext = context;
+    }
 
     @Override
-    public boolean setDestination( String payload ) {
+    public boolean setDestination(String payload ) {
         // Handle navigation to destination here
+
+        // Added for setDestinationDirective
+        mLogger.postInfo(sTag, payload);
+
         try {
             // Log payload
             JSONObject template = new JSONObject( payload );
-            mLogger.postJSONTemplate( sTag, template.toString( 4 ) );
+            mLogger.postJSONTemplate( sTag, template.toString(4 ) );
 
             // Log display card
             mLogger.postDisplayCard( template, LogRecyclerViewAdapter.SET_DESTINATION_TEMPLATE );
 
+
+            //Added for setDestinationDirective
+            //Get lat and long from the payload
+            double latitude  = template.getJSONObject("destination").getJSONObject("coordinate").getDouble("latitudeInDegrees");
+            double longitude = template.getJSONObject("destination").getJSONObject("coordinate").getDouble("longitudeInDegrees");
+
+
+            Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                    Uri.parse("google.navigation:q=" + latitude + "," + longitude));
+
+            // only attempt to open the navigation system if the system can identify an app that can respond to the intent
+            if (intent.resolveActivity(mContext.getPackageManager()) != null) {
+                mContext.startActivity(intent);
+            }
             return true;
+
         } catch ( JSONException e ) {
             mLogger.postError( sTag, e.getMessage() );
             return false;
@@ -50,6 +83,16 @@ public class NavigationHandler extends Navigation {
     @Override
     public boolean cancelNavigation() {
         mLogger.postInfo( sTag, "Cancel Navigation Called" );
+
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        mapIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+        // only attempt to cancel navigation if the system can identify an app that can respond to the intent
+        if (mapIntent.resolveActivity(mContext.getPackageManager()) != null) {
+            mContext.startActivity(mapIntent);
+        }
+
         return true;
     }
 }

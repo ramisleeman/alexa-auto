@@ -1,0 +1,32 @@
+{
+  "manifest": {
+    "publishingInformation": {
+      "locales": {
+        "en-US": {
+          "summary": "ice cream finder using Yelp API",
+          "examplePhrases": [
+            "Alexa open ice cream finder",
+            "ice cream finder"
+          ],
+          "name": "ice-cream-finder",
+          "description": "Sample Full Description"
+        }
+      },
+      "category": "CONNECTED_CAR"
+    },
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "sourceDir": "lambda/py/lambda_upload",
+          "uri": "ask-custom-ice-cream-finder-default"
+        }
+      }
+    },
+    "manifestVersion": "1.0",
+    "permissions": [
+      {
+        "name": "alexa::devices:all:geolocation:read"
+      }
+    ]
+  }
+}
