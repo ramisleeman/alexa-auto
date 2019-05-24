@@ -18,7 +18,7 @@ The implementation in the aac-sdk folder is based on AUTO SDK 1.6, with only the
 In summary to get the Alexa Auto SDK (Android Specific) running perform the following 4 tasks:
 1. git clone https://github.com/alexa/aac-sdk.git
 2. Generate 2 files:
-		- api_key.txt
+	- api_key.txt
 	- app_config.json
 
 place the 2 files under this lcoation:
