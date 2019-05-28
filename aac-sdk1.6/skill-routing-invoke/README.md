@@ -41,7 +41,7 @@ mNavigation = new NavigationHandler( this, mLogger )
 
 
 
-Althogu not needed for this demo but location information (Latitude, Longitude, Altitude) can be fetched by the below functions that are located in the LocationProviderHandler.java class that is located in the following directory:
+Although not needed for this demo but location information (Latitude, Longitude, Altitude) can be fetched by the below functions that are located in the LocationProviderHandler.java class that is located in the following directory:
 aac-sdk/samples/android/app/src/main/java/com/amazon/sampleapp/impl/LocationProvider
 
 - Double.toString(mCurrentLocation.getAltitude());
