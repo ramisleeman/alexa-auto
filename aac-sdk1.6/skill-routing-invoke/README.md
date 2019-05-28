@@ -8,7 +8,7 @@
 
 This demo requires the implementation of 2 pieces:
 
-- Alexa Auto SDK must modified to invoke Google Maps from the Tablet. Added logic also supports canceling navigation as well.
+- Alexa Auto SDK must be modified to invoke Google Maps from the Tablet. Added logic also supports canceling navigation as well.
 -  A Sample Skill that once triggered will invoke Yelp API and responds back with the closest and highest rating ice-cream shop in the proximity of the Android Tablet. A simple cost function is implemented to return a specific ice-cream shop.
 
 
