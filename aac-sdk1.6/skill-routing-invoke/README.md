@@ -51,7 +51,7 @@ aac-sdk/samples/android/app/src/main/java/com/amazon/sampleapp/impl/LocationProv
 
 
 ### 3. Custom Skill Implementation
-NOTE: At the writing of this README, accesing geolocation through a custom skill requires whitelisting. The skill will not function properly without the approtiate whitelisting.
+**NOTE:** At the writing of this README, accesing geolocation through a custom skill requires whitelisting. The skill will not function properly without the approtiate whitelisting.
 
 As a summay and for simplicity, as soon as the skill is invoked, it searches Yelp for the 'best' icecream shop in the device's proximity and then it sends a destination directive to the device invoking the request.
 
