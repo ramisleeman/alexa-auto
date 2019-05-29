@@ -110,9 +110,28 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.UUID;
 
+
+import com.amazonaws.mobile.client.AWSMobileClient;
+import com.amazonaws.mobile.client.Callback;
+import com.amazonaws.mobile.client.UserStateDetails;
+import com.amazonaws.mobileconnectors.iot.AWSIotKeystoreHelper;
+import com.amazonaws.mobileconnectors.iot.AWSIotMqttClientStatusCallback;
+import com.amazonaws.mobileconnectors.iot.AWSIotMqttLastWillAndTestament;
+import com.amazonaws.mobileconnectors.iot.AWSIotMqttManager;
+import com.amazonaws.mobileconnectors.iot.AWSIotMqttNewMessageCallback;
+import com.amazonaws.mobileconnectors.iot.AWSIotMqttQos;
+import com.amazonaws.regions.Region;
+import com.amazonaws.regions.Regions;
+import com.amazonaws.services.iot.AWSIotClient;
+import com.amazonaws.services.iot.model.AttachPrincipalPolicyRequest;
+import com.amazonaws.services.iot.model.CreateKeysAndCertificateRequest;
+import com.amazonaws.services.iot.model.CreateKeysAndCertificateResult;
+
+import java.util.UUID;
 /* Sample Metrics Code */
 //import com.amazon.metricuploadservice.MetricsUploadService;
 //import com.amazon.metricuploadservice.MetricUploadConfiguration;
+import java.security.KeyStore;
 
 public class MainActivity extends AppCompatActivity implements Observer {
 
@@ -180,6 +199,21 @@ public class MainActivity extends AppCompatActivity implements Observer {
 
     /* Sample Metrics Code */
 //    private MetricsUploadService mMetricsUploadService;
+
+    //Added for AWS IoT
+    private static final Regions MY_REGION = Regions.US_EAST_1;
+    private static final String CUSTOMER_SPECIFIC_ENDPOINT = "a17ewziahkj38y-ats.iot.us-east-1.amazonaws.com";
+    private String clientId;
+    AWSIotMqttManager mqttManager;
+    AWSIotClient mIotAndroidClient;
+    String keystorePath;
+    String keystoreName;
+    String keystorePassword;
+    private static final String KEYSTORE_NAME = "iot_keystore";
+    private static final String KEYSTORE_PASSWORD = "password";
+    private static final String CERTIFICATE_ID = "default";
+    String certificateId;
+    KeyStore clientKeyStore = null;
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
@@ -752,10 +786,77 @@ public class MainActivity extends AppCompatActivity implements Observer {
         super.onCreateOptionsMenu( menu );
         getMenuInflater().inflate( R.menu.menu_main, menu );
 
+        initAWSIoT();
+
         // Set tap-to-talk and hold-to-talk actions
         mTapToTalkIcon = menu.findItem( R.id.action_talk );
         initTapToTalk();
         return true;
+    }
+
+
+    private void initAWSIoT() {
+
+        clientId = UUID.randomUUID().toString();
+        // Initialize the AWS Cognito credentials provider
+        AWSMobileClient.getInstance().initialize(this, new Callback<UserStateDetails>() {
+            @Override
+            public void onResult(UserStateDetails result) {
+                initIoTClient();
+            }
+            @Override
+            public void onError(Exception e) {
+                mLogger.postWarn("init AWS IoT", "onError: ");
+            }
+        });
+    }
+
+    void initIoTClient() {
+        Region region = Region.getRegion(MY_REGION);
+
+        //clientId must be a unique umber
+        // MQTT Client
+        mqttManager = new AWSIotMqttManager(clientId, CUSTOMER_SPECIFIC_ENDPOINT);
+
+        // Set keepalive to 10 seconds.  Will recognize disconnects more quickly but will also send
+        // MQTT pings every 10 seconds.
+        mqttManager.setKeepAlive(10);
+
+        // Set Last Will and Testament for MQTT.  On an unclean disconnect (loss of connection)
+        // AWS IoT will publish this message to alert other clients.
+        AWSIotMqttLastWillAndTestament lwt = new AWSIotMqttLastWillAndTestament("my/lwt/topic",
+                "Android client lost connection", AWSIotMqttQos.QOS0);
+        mqttManager.setMqttLastWillAndTestament(lwt);
+
+        // IoT Client (for creation of certificate if needed)
+        mIotAndroidClient = new AWSIotClient(AWSMobileClient.getInstance());
+        mIotAndroidClient.setRegion(region);
+
+        keystorePath = getFilesDir().getPath();
+        keystoreName = KEYSTORE_NAME;
+        keystorePassword = KEYSTORE_PASSWORD;
+        certificateId = CERTIFICATE_ID;
+//TODO crashed when i run the try
+        // To load cert/key from keystore on filesystem
+        try {
+            if (AWSIotKeystoreHelper.isKeystorePresent(keystorePath, keystoreName)) {
+                if (AWSIotKeystoreHelper.keystoreContainsAlias(certificateId, keystorePath,
+                        keystoreName, keystorePassword)) {
+                    mLogger.postInfo("Init Function", "Certificate " + certificateId
+                            + " found in keystore - using for MQTT.");
+                    // load keystore from file into memory to pass on connection
+                    clientKeyStore = AWSIotKeystoreHelper.getIotKeystore(certificateId,
+                            keystorePath, keystoreName, keystorePassword);
+                } else {
+                    mLogger.postWarn("Init Function", "Key/cert " + certificateId + " not found in keystore.");
+                }
+            } else {
+                mLogger.postWarn("Init Function", "Keystore " + keystorePath + "/" + keystoreName + " not found.");
+            }
+        }
+        catch (Exception e) {
+            mLogger.postWarn("Init Function", "An error occurred retrieving cert/key from keystore.");
+        }
     }
 
     private void initTapToTalk() {
