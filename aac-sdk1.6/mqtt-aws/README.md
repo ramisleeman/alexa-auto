@@ -153,7 +153,7 @@ PS: Region should be in lower case ex: "us-east-1"
 
 
 
-**Summary of changes done to the Android Sample App:**
+### **Summary of changes done to the Android Sample App:**
 
 1. Add awsconfiguration.json located under:
 
@@ -185,5 +185,18 @@ PS: Region should be in lower case ex: "us-east-1"
 
    You can also generate your own keystone file if you wish but details are beyond the scope of this guide.
 
+   4. Added a new class called: mqtt_manager.java that includes all the required functions to complete this functionality.  
    
+   
+
+#### Setup is complete and now you can send messages from your Android Auto Sample App by calling the MQTT functions:
+  1. mqtt_manager.initIoTClient(<clientId_IoT>, getApplicationContext());
+  2. mqtt_manager.mqttConnect();
+  3. mqtt_manager.mqttPublish(<topic_name>, <message in JSON format>);
+  4. mqttSubscribe(<topic_name>);
+  5. mqttDisconnect();
+
+Notes: Allow registration some time to complete after calling the mqttConnect() funciton before attempting to publish or suscribe.
+The system can be tested using your AWS account AWS IoT section by clicking at the Test option at the left tab and then suscribing to the same topic as defined in the Sample App.
+
 

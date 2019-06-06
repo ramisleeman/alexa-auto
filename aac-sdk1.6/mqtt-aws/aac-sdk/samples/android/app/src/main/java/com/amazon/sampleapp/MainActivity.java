@@ -310,6 +310,7 @@ public class MainActivity extends AppCompatActivity implements Observer {
             @Override
             public void onResult(UserStateDetails result) {
                 mqtt_manager.initIoTClient(clientId_IoT, getApplicationContext());
+                mqtt_manager.mqttConnect();
             }
             @Override
             public void onError(Exception e) {
