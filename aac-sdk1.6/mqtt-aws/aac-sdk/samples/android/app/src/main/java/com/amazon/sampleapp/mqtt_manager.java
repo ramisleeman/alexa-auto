@@ -11,22 +11,10 @@ import com.amazonaws.mobileconnectors.iot.AWSIotMqttManager;
 import com.amazonaws.mobileconnectors.iot.AWSIotMqttQos;
 import com.amazonaws.regions.Region;
 import com.amazonaws.services.iot.AWSIotClient;
-import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
-import com.amazonaws.mobileconnectors.iot.AWSIotKeystoreHelper;
 import com.amazonaws.mobileconnectors.iot.AWSIotMqttClientStatusCallback;
-import com.amazonaws.mobileconnectors.iot.AWSIotMqttLastWillAndTestament;
-import com.amazonaws.mobileconnectors.iot.AWSIotMqttManager;
 import com.amazonaws.mobileconnectors.iot.AWSIotMqttNewMessageCallback;
-import com.amazonaws.mobileconnectors.iot.AWSIotMqttQos;
-import com.amazonaws.regions.Region;
-import com.amazonaws.regions.Regions;
-import com.amazonaws.services.iot.AWSIotClient;
-import com.amazonaws.services.iot.model.AttachPrincipalPolicyRequest;
-import com.amazonaws.services.iot.model.CreateKeysAndCertificateRequest;
-import com.amazonaws.services.iot.model.CreateKeysAndCertificateResult;
-import com.amazonaws.AmazonClientException;
-
+import java.io.UnsupportedEncodingException;
 import java.security.KeyStore;
 
 
@@ -82,19 +70,47 @@ public class mqtt_manager extends Activity {
     /* Connect */
     public static void mqttConnect(){
         Log.i("AWS-init", "In mqttConnect");
+        try {
+            mqttManager.connect(clientKeyStore, new AWSIotMqttClientStatusCallback() {
+                @Override
+                public void onStatusChanged(final AWSIotMqttClientStatus status, final Throwable throwable) {
+                    Log.i("mqttConnect", "Status = " + String.valueOf(status));
+                    if (throwable != null) {Log.i("mqttConnect", "Connection error.", throwable);}
+                }
+            });
+        } catch (final Exception e) {Log.i("mqttConnect", "Connection error.", e);}
     }
 
 
-    /* Subscribe */
-    public static void mqttSubscribe(){
-        Log.i("AWS-init", "In mqttSubscribe");
+    /* Disconnect */
+    public void mqttDisconnect() {
+        Log.i("AWS-init", "In mqttDisconnect");
+        try {mqttManager.disconnect();}
+        catch (Exception e) {Log.e("mqttDisconnect", "Disconnect error.", e);}
+    }
 
+    /* Subscribe */
+    public static String mqttSubscribe(final String topic){
+        Log.i("AWS-init", "In mqttSubscribe");
+        Log.d("mqttSubscribe", "topic = " + topic);
+        String message = "No Message Received";
+        try {
+            mqttManager.subscribeToTopic(topic, AWSIotMqttQos.QOS0, new AWSIotMqttNewMessageCallback() {
+                @Override
+                public void onMessageArrived(final String topic, final byte[] data) {
+                    try {final String message = new String(data, "UTF-8");}
+                    catch (UnsupportedEncodingException e) {Log.e("mqttSubscribe", "Message encoding error.", e);}
+                        }});
+        } catch (Exception e) {Log.e("mqttSubscribe", "Subscription error.", e);}
+        return message;
     }
 
 
     /* Publish */
-    public static void mqttPublish() {
+    public static void mqttPublish(final String topic, final String msg) {
         Log.i("AWS-init", "In mqttPublish");
+        try { mqttManager.publishString(msg, topic, AWSIotMqttQos.QOS0);}
+        catch (Exception e) {Log.e("mqttPublish", "Publish error.", e);}
     }
 
 }
