@@ -1,6 +1,6 @@
 # alexa-auto
 
-The subfolders located under aac-sdk 1.6 include quick reference to implement the following features on top of Alexa Auto SDK 1.6 (Andoid Implementation):
+The subfolders located under aac-sdk 1.6 include a quick reference to implement the following features on top of Alexa Auto SDK 1.6 (Andoid Implementation):
 
 
 1. Local Media Implementation: Quick guide to register a local media device (a USB in this case).

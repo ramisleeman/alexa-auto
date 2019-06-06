@@ -47,4 +47,4 @@ if ( !mEngine.registerPlatformInterface(mUSBLocalMediaSource) )
    throw new RuntimeException( "Could not register Mock USB player Local Media Source platform interface" );
 ```
 
-Now that the source is registered, you can implement the activity around this implementation. This should be done in the implemented class (USBLocalMediaSource.java), and this is specific to the hardware that is used on the implementation.
+Now that the source is registered, you can implement the activity around this implementation. This should be done in the implemented class (USBLocalMediaSource.java), and this is specific to the hardware that is used for the implementation.

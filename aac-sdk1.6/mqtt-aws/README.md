@@ -1,7 +1,7 @@
 # alexa-auto
 ## quick guide to implement mqtt using AWS IoT on the Android Auto Sample App
 
-
+##### Prerequisites: Alexa Auto Android Sample App is already implemented and running per the official instructions:  https://github.com/alexa/aac-sdk
 
 **AWS Steps Required:**
 
@@ -161,9 +161,10 @@ PS: Region should be in lower case ex: "us-east-1"
 
 2. Change the build.grade to include aws dependencies:
 
-   1. ```java
+   1. ```xml
       implementation "com.amazonaws:aws-android-sdk-iot:2.11.+"
-      implementation "com.amazonaws:aws-android-sdk-mobile-client:2.11.+"
+      implementation "com.amazonaws:aws-android-sdk-mobile-client:2.11.+"	
+       		
       ```
 
 3. Push the iot_keystore located under this directory:
@@ -185,18 +186,20 @@ PS: Region should be in lower case ex: "us-east-1"
 
    You can also generate your own keystone file if you wish but details are beyond the scope of this guide.
 
+   
+   
    4. Added a new class called: mqtt_manager.java that includes all the required functions to complete this functionality.  
    
    
 
-#### Setup is complete and now you can send messages from your Android Auto Sample App by calling the MQTT functions:
+#### Setup is complete and now you can send and receive MQTT messages from your Android Auto Sample App by calling the following added MQTT functions:
   1. mqtt_manager.initIoTClient(<clientId_IoT>, getApplicationContext());
   2. mqtt_manager.mqttConnect();
   3. mqtt_manager.mqttPublish(<topic_name>, <message in JSON format>);
   4. mqttSubscribe(<topic_name>);
   5. mqttDisconnect();
 
-Notes: Allow registration some time to complete after calling the mqttConnect() funciton before attempting to publish or suscribe.
-The system can be tested using your AWS account AWS IoT section by clicking at the Test option at the left tab and then suscribing to the same topic as defined in the Sample App.
+**Notes:** Allow registration some time to complete after calling the mqttConnect() funciton before attempting to publish or subscribe.
+The system can be tested using your AWS account AWS IoT section by clicking at the Test option at the left menu and then subscribing to the same topic as defined in the Sample App.
 
 
