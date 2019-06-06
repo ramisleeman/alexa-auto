@@ -103,7 +103,7 @@
 
 **Android Auto Steps Required:**
 
-* Open MainActivity.java located under:
+* Open mqtt_manager.java located under:
 
   /aac-sdk/samples/android/app/src/main/java/com/amazon/sampleapp
 
@@ -120,14 +120,16 @@ private static final String AWS_IOT_POLICY_NAME = "FILL-HERE";
 ```
 
 
-1. CUSTOMER_SPECIFIC_ENDPOINT is located under the setting page located in the following link:
+	1. MY_REGION is located under Sample code in the identity pool in the following link (Step 1 Above)
 
-https://console.aws.amazon.com/iot/ 
-
-2. AWS_IOT_POLICY_NAME is the policy name that was created is step 3 
-
-3. MY_REGION is located under Sample code in the identity pool in the following link (Step 1 Above)
    https://console.aws.amazon.com/cognito 
+
+	2. CUSTOMER_SPECIFIC_ENDPOINT is located under the setting page located in the following link:
+
+   https://console.aws.amazon.com/iot/
+
+	3. AWS_IOT_POLICY_NAME is the policy name that was created is step 3 
+
 
 * Open awsconfiguration.json located under:
 
@@ -147,7 +149,7 @@ PS: Region should be in lower case ex: "us-east-1"
 
 
 
-**Android Auto and AWS Configuration is now complete and the system should be to subscribe and publish messages through the AWS IoT broker.**
+**Android Auto and AWS Configuration is now complete and the system should be able to subscribe and publish messages through the AWS IoT broker.**
 
 
 
@@ -164,4 +166,24 @@ PS: Region should be in lower case ex: "us-east-1"
       implementation "com.amazonaws:aws-android-sdk-mobile-client:2.11.+"
       ```
 
-3. 
+3. Push the iot_keystore located under this directory:
+
+   /aac-sdk1.6/mqtt-aws/aac-sdk
+
+   
+
+   Into your Android Emulator:
+
+   ```
+    adb root
+    adb push iot_keystore.bks /data/user/0/com.amazon.sampleapp/files/iot_keystore
+   ```
+
+   
+
+   Alternatively you can go to View, Tool Windows, Device File Explorer and then upload the keystone file manually. 
+
+   You can also generate your own keystone file if you wish but details are beyond the scope of this guide.
+
+   
+

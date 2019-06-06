@@ -15,6 +15,7 @@
 
 package com.amazon.sampleapp;
 
+
 import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -41,6 +42,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -95,6 +97,7 @@ import com.amazon.sampleapp.impl.SpeechSynthesizer.SpeechSynthesizerHandler;
 import com.amazon.sampleapp.impl.TemplateRuntime.TemplateRuntimeHandler;
 import com.amazon.sampleapp.logView.LogEntry;
 import com.amazon.sampleapp.logView.LogRecyclerViewAdapter;
+import com.amazon.sampleapp.mqtt_manager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -104,34 +107,30 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.file.Path;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.CertificateException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.UUID;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 
 
 import com.amazonaws.mobile.client.AWSMobileClient;
 import com.amazonaws.mobile.client.Callback;
 import com.amazonaws.mobile.client.UserStateDetails;
-import com.amazonaws.mobileconnectors.iot.AWSIotKeystoreHelper;
-import com.amazonaws.mobileconnectors.iot.AWSIotMqttClientStatusCallback;
-import com.amazonaws.mobileconnectors.iot.AWSIotMqttLastWillAndTestament;
-import com.amazonaws.mobileconnectors.iot.AWSIotMqttManager;
-import com.amazonaws.mobileconnectors.iot.AWSIotMqttNewMessageCallback;
-import com.amazonaws.mobileconnectors.iot.AWSIotMqttQos;
-import com.amazonaws.regions.Region;
-import com.amazonaws.regions.Regions;
-import com.amazonaws.services.iot.AWSIotClient;
-import com.amazonaws.services.iot.model.AttachPrincipalPolicyRequest;
-import com.amazonaws.services.iot.model.CreateKeysAndCertificateRequest;
-import com.amazonaws.services.iot.model.CreateKeysAndCertificateResult;
+
 
 import java.util.UUID;
 /* Sample Metrics Code */
 //import com.amazon.metricuploadservice.MetricsUploadService;
 //import com.amazon.metricuploadservice.MetricUploadConfiguration;
 import java.security.KeyStore;
+
 
 public class MainActivity extends AppCompatActivity implements Observer {
 
@@ -200,21 +199,6 @@ public class MainActivity extends AppCompatActivity implements Observer {
     /* Sample Metrics Code */
 //    private MetricsUploadService mMetricsUploadService;
 
-    //Added for AWS IoT
-    private static final Regions MY_REGION = Regions.US_EAST_1;
-    private static final String CUSTOMER_SPECIFIC_ENDPOINT = "a17ewziahkj38y-ats.iot.us-east-1.amazonaws.com";
-    private String clientId;
-    AWSIotMqttManager mqttManager;
-    AWSIotClient mIotAndroidClient;
-    String keystorePath;
-    String keystoreName;
-    String keystorePassword;
-    private static final String KEYSTORE_NAME = "iot_keystore";
-    private static final String KEYSTORE_PASSWORD = "password";
-    private static final String CERTIFICATE_ID = "default";
-    String certificateId;
-    KeyStore clientKeyStore = null;
-
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
@@ -234,7 +218,10 @@ public class MainActivity extends AppCompatActivity implements Observer {
             ActivityCompat.requestPermissions( this,
                     requests.toArray( new String[requests.size()] ), sPermissionRequestCode );
         } else create();
+
     }
+
+
 
     @Override
     public void onRequestPermissionsResult( int requestCode, @NonNull String[] permissions,
@@ -314,6 +301,23 @@ public class MainActivity extends AppCompatActivity implements Observer {
 
         // Display device config settings in GUI
         updateDeviceConfigGUI( clientId, clientSecret, productId, productDsn );
+
+        final String clientId_IoT;
+        clientId_IoT = clientId;
+
+        // Initialize the AWS Cognito credentials provider
+        AWSMobileClient.getInstance().initialize(this, new Callback<UserStateDetails>() {
+            @Override
+            public void onResult(UserStateDetails result) {
+                mqtt_manager.initIoTClient(clientId_IoT, getApplicationContext());
+            }
+            @Override
+            public void onError(Exception e) {
+                Log.i("AWS-init exception",  e.getMessage());
+            }
+        });
+
+
 
     }
 
@@ -786,8 +790,6 @@ public class MainActivity extends AppCompatActivity implements Observer {
         super.onCreateOptionsMenu( menu );
         getMenuInflater().inflate( R.menu.menu_main, menu );
 
-        initAWSIoT();
-
         // Set tap-to-talk and hold-to-talk actions
         mTapToTalkIcon = menu.findItem( R.id.action_talk );
         initTapToTalk();
@@ -795,69 +797,7 @@ public class MainActivity extends AppCompatActivity implements Observer {
     }
 
 
-    private void initAWSIoT() {
 
-        clientId = UUID.randomUUID().toString();
-        // Initialize the AWS Cognito credentials provider
-        AWSMobileClient.getInstance().initialize(this, new Callback<UserStateDetails>() {
-            @Override
-            public void onResult(UserStateDetails result) {
-                initIoTClient();
-            }
-            @Override
-            public void onError(Exception e) {
-                mLogger.postWarn("init AWS IoT", "onError: ");
-            }
-        });
-    }
-
-    void initIoTClient() {
-        Region region = Region.getRegion(MY_REGION);
-
-        //clientId must be a unique umber
-        // MQTT Client
-        mqttManager = new AWSIotMqttManager(clientId, CUSTOMER_SPECIFIC_ENDPOINT);
-
-        // Set keepalive to 10 seconds.  Will recognize disconnects more quickly but will also send
-        // MQTT pings every 10 seconds.
-        mqttManager.setKeepAlive(10);
-
-        // Set Last Will and Testament for MQTT.  On an unclean disconnect (loss of connection)
-        // AWS IoT will publish this message to alert other clients.
-        AWSIotMqttLastWillAndTestament lwt = new AWSIotMqttLastWillAndTestament("my/lwt/topic",
-                "Android client lost connection", AWSIotMqttQos.QOS0);
-        mqttManager.setMqttLastWillAndTestament(lwt);
-
-        // IoT Client (for creation of certificate if needed)
-        mIotAndroidClient = new AWSIotClient(AWSMobileClient.getInstance());
-        mIotAndroidClient.setRegion(region);
-
-        keystorePath = getFilesDir().getPath();
-        keystoreName = KEYSTORE_NAME;
-        keystorePassword = KEYSTORE_PASSWORD;
-        certificateId = CERTIFICATE_ID;
-//TODO crashed when i run the try
-        // To load cert/key from keystore on filesystem
-        try {
-            if (AWSIotKeystoreHelper.isKeystorePresent(keystorePath, keystoreName)) {
-                if (AWSIotKeystoreHelper.keystoreContainsAlias(certificateId, keystorePath,
-                        keystoreName, keystorePassword)) {
-                    mLogger.postInfo("Init Function", "Certificate " + certificateId
-                            + " found in keystore - using for MQTT.");
-                    // load keystore from file into memory to pass on connection
-                    clientKeyStore = AWSIotKeystoreHelper.getIotKeystore(certificateId,
-                            keystorePath, keystoreName, keystorePassword);
-                } else {
-                    mLogger.postWarn("Init Function", "Key/cert " + certificateId + " not found in keystore.");
-                }
-            } else {
-                mLogger.postWarn("Init Function", "Keystore " + keystorePath + "/" + keystoreName + " not found.");
-            }
-        }
-        catch (Exception e) {
-            mLogger.postWarn("Init Function", "An error occurred retrieving cert/key from keystore.");
-        }
-    }
 
     private void initTapToTalk() {
         if ( mTapToTalkIcon != null && mAlexaClient != null && mSpeechRecognizer != null ) {
@@ -1070,6 +1010,7 @@ public class MainActivity extends AppCompatActivity implements Observer {
 //            throw ex;
 //        }
 //    }
+
 
     /// Set up log view filtering options
     private void setUpLogViewOptions() {

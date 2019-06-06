@@ -39,6 +39,7 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer-smoothstreaming:2.7.1'
     implementation 'com.google.android.exoplayer:exoplayer-hls:2.7.1'
     implementation 'com.google.android.gms:play-services-maps:16.0.0'
+
     //Added for MQTT
     implementation "com.amazonaws:aws-android-sdk-iot:2.11.+"
     implementation "com.amazonaws:aws-android-sdk-mobile-client:2.11.+"
