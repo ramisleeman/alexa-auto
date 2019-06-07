@@ -18,4 +18,8 @@ The implementation in the aac-sdk folder is based on AUTO SDK 1.6, with only the
 
 
 
+optimizedCharging is demo skill that interfaces with a home smart charger and then gives the electric vehicle and Alexa user the option to charge their car with the cheapest option possible by interfacing with the grid and getting the cheapest price.  
+
+
+
 ##### 
