@@ -1,0 +1,51 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "charging scheduler",
+            "intents": [
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                
+                {
+                    "name": "FastestChargingIntent",
+                    "slots": [],
+                    "samples": [
+                        "fastest"
+                    ]
+                },
+                {
+                    "name": "CheapestChargingIntent",
+                    "slots": [],
+                    "samples": [
+                        "cheapest"
+                    ]
+                },
+                {
+                    "name": "AdvancedChargingIntent",
+                    "slots": [],
+                    "samples": [
+                        "advanced"
+                    ]
+                }
+            ],
+            "types": []
+        }
+    }
+}
+
+
+

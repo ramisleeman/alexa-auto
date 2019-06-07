@@ -1,0 +1,36 @@
+{
+  "manifest": {
+    "publishingInformation": {
+      "locales": {
+        "en-US": {
+          "summary": "Alexa can help you optimize your EV charging experience.",
+          "examplePhrases": [
+            "Alexa start charging immediately",
+            "Alexa charge my car with the cheapest option",
+            "Alexa get my car to 80% charge by 6 in the morning"
+          ],
+          "name": "alexa-ev-charging",
+          "description": "Sample Full Description"
+        }
+      },
+      "isAvailableWorldwide": true,
+      "testingInstructions": "Sample Testing Instructions.",
+      "category": "CONNECTED_CAR",
+      "distributionCountries": []
+    },
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "sourceDir": "lambda/py/lambda_upload",
+          "uri": "ask-custom-skill-alexa-charging-default"
+        }
+      }
+    },
+    "manifestVersion": "1.0",
+    "permissions": [
+      {
+        "name": "alexa::devices:all:geolocation:read"
+      }
+    ]
+  }
+}
