@@ -164,9 +164,8 @@ PS: Region should be in lower case ex: "us-east-1"
    1. ```xml
       implementation "com.amazonaws:aws-android-sdk-iot:2.11.+"
       implementation "com.amazonaws:aws-android-sdk-mobile-client:2.11.+"	
-       		
       ```
-
+   
 3. Push the iot_keystore located under this directory:
 
    /aac-sdk1.6/mqtt-aws/aac-sdk
@@ -199,7 +198,7 @@ PS: Region should be in lower case ex: "us-east-1"
   4. mqttSubscribe(<topic_name>);
   5. mqttDisconnect();
 
-**Notes:** Allow registration some time to complete after calling the mqttConnect() funciton before attempting to publish or subscribe.
+**Notes:** Allow registration some time to complete after calling the mqttConnect() function before attempting to publish or subscribe.
 The system can be tested using your AWS account AWS IoT section by clicking at the Test option at the left menu and then subscribing to the same topic as defined in the Sample App.
 
 

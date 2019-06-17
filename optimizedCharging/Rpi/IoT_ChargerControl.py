@@ -77,13 +77,17 @@ def cheapestSelection(price):
     GPIO.output(21,GPIO.HIGH)
     global firstTimeFastest, firstTimeCheapest, firstTimeAdvanced
     if firstTimeCheapest:
-	cheapestLightDance()
+	    cheapestLightDance()
     firstTimeFastest  = True
     firstTimeCheapest = False
     firstTimeAdvanced = True
-    #logic to determine when to start charging given the cheapest price constriants
+    #logic to determine when to start charging, given the cheapest price constriants
     
+    #*********************
     #TOY EXAMPLE
+    #TOY EXAMPLE
+    #*********************
+
     timeNeededToCharge = 48 #(4 hours from 0 to 100 is equivialnt to 48 minutes for 20% topoff, assuming 4 hours for a full charge)
     #round to the highest 10th minute (to match the data)
     timeNeededToCharge = 50
@@ -133,8 +137,8 @@ def parse_payload(payload, responseStatus, token):
 	dict = json.loads(payload)
    	if dict["state"]["desired"]["chargingOption"] == "NOW":
             fastestSelection()
-    	if dict["state"]["desired"]["chargingOption"] == "LATER":
-	    cheapestSelection(dict["state"]["desired"]["priceArray"])
+    if dict["state"]["desired"]["chargingOption"] == "LATER":
+        cheapestSelection(dict["state"]["desired"]["priceArray"])
    	if dict["state"]["desired"]["chargingOption"] == "ADVANCED":
 	    advancedSelected(dict["state"]["desired"]["priceArray"], dict["state"]["desired"]["powerCap"])
 

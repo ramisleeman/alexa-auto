@@ -22,7 +22,7 @@ This demo requires the implementation of 2 pieces:
 3. Yelp results are passed through a simple cost function that picks the 'best' result and send that result's GPS coordinates to the invoking Android Auto Sample App.
 4. Android Auto Sample App will then invoke Google Maps with directions based on the longtitide and latitide that are sent by the skill.
 5. Navigation will then start on the invoking device.
-6. User can cancel navigation at anypoint by saying: "Cancel Navigation"
+6. User can cancel navigation at any time by saying: "Cancel Navigation"
 
 
 ### 2. Alexa Auto SDK Changes
