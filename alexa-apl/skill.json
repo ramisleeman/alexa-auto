@@ -1,0 +1,39 @@
+{
+  "manifest": {
+    "publishingInformation": {
+      "locales": {
+        "en-US": {
+          "summary": "Sample Short Description",
+          "examplePhrases": [
+            "Alexa open show moki",
+            "play normal video",
+            "play APL video"
+          ],
+          "name": "alexa-apl",
+          "description": "Sample Full Description"
+        }
+      },
+      "isAvailableWorldwide": true,
+      "testingInstructions": "Sample Testing Instructions.",
+      "category": "KNOWLEDGE_AND_TRIVIA",
+      "distributionCountries": []
+    },
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "sourceDir": "lambda/py/lambda_upload",
+          "uri": "ask-custom-alexa-apl-default"
+      },
+    "interfaces": [
+      {
+        "type": "ALEXA_PRESENTATION_APL"
+      },
+      {
+        "type": "VIDEO_APP"
+      }
+    ]
+ }
+    },	 
+    "manifestVersion": "1.0"
+  }
+}
