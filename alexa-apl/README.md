@@ -1,4 +1,4 @@
-Build an Alexa Hello World Skill in ASK Python SDK (using Classes)
+Sample Python Demo to illustarte video playback using the Video APP and ALEXA PRESENTATION APL
 =========================================
 
 This tutorial will walk first-time Alexa skills developers through all the 
