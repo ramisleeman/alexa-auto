@@ -19,9 +19,14 @@ In each folder, a README presents a detailed notes on the specific implementatio
 The implementation in the aac-sdk folder is based on AUTO SDK 1.6, with only the changes required to implement the described tasks.
 
 
+
 ## optimizedCharging
+
 **optimizedCharging** is demo skill that interfaces with a home smart charger and then gives the electric vehicle and Alexa user the option to charge their car with the cheapest option possible by interfacing with the grid and getting the cheapest price. 
 
 
+
+## alexa-apl
+**alexa-apl** is a demo skill implemented in python that illustartes the usuage of videoplayback using both VIDEO_APP and APL.
 
 ##### 
