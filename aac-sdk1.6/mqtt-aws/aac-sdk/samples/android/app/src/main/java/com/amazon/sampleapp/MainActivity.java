@@ -334,7 +334,7 @@ public class MainActivity extends AppCompatActivity implements Observer {
             Log.e( sTag, "Could not start engine. Reason: " + e.getMessage() );
             return;
         }
-
+` `
         // Observe log event changes to update the log view
         mLogger.addLogObserver( this );
         mSpeechRecognizer.addObserver( this );

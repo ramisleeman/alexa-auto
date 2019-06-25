@@ -29,4 +29,8 @@ The implementation in the aac-sdk folder is based on AUTO SDK 1.6, with only the
 ## alexa-apl
 **alexa-apl** is a demo skill implemented in python that illustartes the usuage of videoplayback using both VIDEO_APP and APL.
 
-##### 
+
+
+
+## voice-can-interface
+**voice-can-intrface** is a sample demo that reads the OBD-II port of vehicles and then reports back the faults through an Alexa Skill. 

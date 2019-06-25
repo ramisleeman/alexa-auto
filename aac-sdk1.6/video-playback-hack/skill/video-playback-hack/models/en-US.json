@@ -1,0 +1,47 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "my video",
+            "intents": [
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "PlayVideoIntent",
+                    "slots": [],
+                    "samples":[
+                        "Play my video",
+                        "play video"
+                    ]
+                },
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "HelloWorldIntent",
+                    "slots": [],
+                    "samples": [
+                        "how are you",
+                        "say hi world",
+                        "say hi",
+                        "hi",
+                        "hello",
+                        "say hello world",
+                        "say hello"
+                    ]
+                }
+            ],
+            "types": []
+        }
+    }
+}
