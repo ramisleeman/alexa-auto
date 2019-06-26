@@ -9,12 +9,9 @@ This sample demo, illustrates a simple example of voice to [CAN](https://www.sae
 
 Specifically, the demo presented here illustrates the use of Alexa along with a Raspberry Pi 3 that are used to read the OBD (On Board Diagnostic) of a vehicle.
 
-
-
+<br />
 ![alt text](Resources/HL.png)
-
-
-
+<br />
 
 
 ## Parts needed
