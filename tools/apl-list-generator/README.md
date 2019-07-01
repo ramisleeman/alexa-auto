@@ -21,34 +21,34 @@ sources_large_url = "https://d2o906d8ln7ui1.cloudfront.net/images/LT1_Background
 skill_logo = "https://d2o906d8ln7ui1.cloudfront.net/images/cheeseskillicon.png"
 
 #main name of the items
-listItems_textContent_primaryText_text = ["name1",\
-                                          "name2",\
-                                          "name3",\
-                                          "name4"]
+listItems_textContent_primaryText_text = ["Gouda",\
+                                          "Sahrp Cheddar",\
+                                          "Blue",\
+                                          "Brie"]
 
 # secondary name of the items
-listItems_textContent_secondaryText_text = [ "distance: 1.2 miles"\
-                                            ,"distance: 2.2 miles"\
-                                            ,"distance: 2.3 miles"\
-                                            ,"distance: 3.2 miles"]
+listItems_textContent_secondaryText_text = [ "Serving Size: 1 on (28g)"\
+                                            ,"Serving Size: 1 slice (28g)"\
+                                            ,"Serving Size: 1 on (28g)"\
+                                            ,"Serving Size: 1 on (28g)"]
 
 
 # teritiary name of the items
-listItems_textContent_tertiaryText_text = ["Free",\
-                                           "$3 an hour",\
-                                           "Free",\
-                                           "$1 an hour"]
+listItems_textContent_tertiaryText_text = ["100 cal",\
+                                           "113 cal",\
+                                           "476 cal",\
+                                           "95 cal"]
 
 # items image links
-listItems_image_sources_small = ["https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png",
-"https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png",
-"https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png",
+listItems_image_sources_small = ["https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png", \
+"https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png", \
+"https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png", \
 "https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png"]
 
 
-listItems_image_sources_large = ["https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png",
-"https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png",
-"https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png",
+listItems_image_sources_large = ["https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png", \
+"https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png", \
+"https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png", \
 "https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png"]
 
 ```
