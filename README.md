@@ -37,5 +37,5 @@ The implementation in the aac-sdk folder is based on AUTO SDK 1.6, with only the
 
 
 
-##tools/apl-list-generator
+## tools/apl-list-generator
 **apl-list-generator** is a tool that generates <launchRequest.json> through a python script without the need to modify the JSON files. launchRequest.json is used to list items using Amazon's APL.
