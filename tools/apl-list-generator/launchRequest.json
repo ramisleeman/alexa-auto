@@ -21,7 +21,7 @@
         }
       ]
     },
-    "title": "List of charging stations",
+    "title": "Calories in 1 Serving of Cheese",
     "logoUrl": "https://d2o906d8ln7ui1.cloudfront.net/images/cheeseskillicon.png"
   },
   "listTemplate1ListData": {
@@ -31,12 +31,12 @@
     "listPage": {
       "listItems": [
         {
-          "listItemIdentifier": "gouda",
+          "listItemIdentifier": "name1",
           "ordinalNumber": 1,
           "textContent": {
             "primaryText": {
               "type": "PlainText",
-              "text": "gouda"
+              "text": "name1"
             },
             "secondaryText": {
               "type": "PlainText",
@@ -69,12 +69,12 @@
           "token": "gouda"
         },
         {
-          "listItemIdentifier": "knefeh",
+          "listItemIdentifier": "name2",
           "ordinalNumber": 2,
           "textContent": {
             "primaryText": {
               "type": "PlainText",
-              "text": "knefeh"
+              "text": "name2"
             },
             "secondaryText": {
               "type": "RichText",
@@ -107,12 +107,12 @@
           "token": "cheddar"
         },
         {
-          "listItemIdentifier": "banana",
+          "listItemIdentifier": "name3",
           "ordinalNumber": 3,
           "textContent": {
             "primaryText": {
               "type": "PlainText",
-              "text": "banana"
+              "text": "name3"
             },
             "secondaryText": {
               "type": "RichText",
@@ -145,12 +145,12 @@
           "token": "blue"
         },
         {
-          "listItemIdentifier": "zahle",
+          "listItemIdentifier": "name4",
           "ordinalNumber": 6,
           "textContent": {
             "primaryText": {
               "type": "PlainText",
-              "text": "zahle"
+              "text": "name4"
             },
             "secondaryText": {
               "type": "RichText",
