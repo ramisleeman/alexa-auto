@@ -4,7 +4,7 @@ jsonFileName = "launchRequest.json"
 
 
 # title, logo, and background image details
-title = "List of charging stations"
+title = "Calories in 1 Serving of Cheese"
 sources_small_url = "https://d2o906d8ln7ui1.cloudfront.net/images/LT1_Background.png"
 sources_large_url = "https://d2o906d8ln7ui1.cloudfront.net/images/LT1_Background.png"
 skill_logo = "https://d2o906d8ln7ui1.cloudfront.net/images/cheeseskillicon.png"
