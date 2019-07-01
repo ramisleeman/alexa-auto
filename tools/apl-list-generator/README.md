@@ -22,7 +22,7 @@ skill_logo = "https://d2o906d8ln7ui1.cloudfront.net/images/cheeseskillicon.png"
 
 #main name of the items
 listItems_textContent_primaryText_text = ["Gouda",\
-                                          "Sahrp Cheddar",\
+                                          "Sharp Cheddar",\
                                           "Blue",\
                                           "Brie"]
 
