@@ -11,10 +11,10 @@ skill_logo = "https://d2o906d8ln7ui1.cloudfront.net/images/cheeseskillicon.png"
 
 
 #main name of the items
-listItems_textContent_primaryText_text = ["gouda",\
-                                          "knefeh",\
-                                          "banana",\
-                                          "zahle"]
+listItems_textContent_primaryText_text = ["name1",\
+                                          "name2",\
+                                          "name3",\
+                                          "name4"]
 
 # secondary name of the items
 listItems_textContent_secondaryText_text = [ "distance: 1.2 miles"\
