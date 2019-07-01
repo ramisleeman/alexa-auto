@@ -41,10 +41,15 @@ listItems_textContent_tertiaryText_text = ["Free",\
 
 # items image links
 listItems_image_sources_small = ["https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png",
-"https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png",                       "https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png",                       "https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png"]
+"https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png",
+"https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png",
+"https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png"]
 
 
-listItems_image_sources_large = ["https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png",                "https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png",                     "https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png",                     "https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png"]
+listItems_image_sources_large = ["https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png",
+"https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png",
+"https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png",
+"https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png"]
 
 ```
 
