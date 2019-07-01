@@ -10,19 +10,17 @@ from ask_sdk_core.dispatch_components import AbstractRequestHandler
 from ask_sdk_core.handler_input import HandlerInput
 from ask_sdk_core.utils import is_request_type, is_intent_name
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)  
-    
-   
+logger.setLevel(logging.INFO)
+
+
 def _load_apl_document(file_path):
     with open(file_path) as f:
         return json.load(f)
-    
+
 class ListItemPressedHandler(AbstractRequestHandler):
     def can_handle(self, handler_input):
-        logger.info("fsdfsdfs")
-        logger.info(handler_input.request_envelope.request.arguments)
-        return (is_request_type("Alexa.Presentation.APL.UserEvent")(handler_input) and int(handler_input.request_envelope.request.arguments[0]) >= 0)
-    
+        return (is_request_type("Alexa.Presentation.APL.UserEvent")(handler_input) and int(handler_input.request_envelope.request.arguments[0]) > 0)
+
     def handle(self, handler_input):
         logger.info("In ListItemPressedHandler")
         videoItems = _load_apl_document("./sampleDataSource.json")
@@ -49,7 +47,7 @@ class ListItemPressedHandler(AbstractRequestHandler):
                     command=MediaCommandType.play)
             ]
         )
-    
+
         return handler_input.response_builder.speak("playing").add_directive(apl_directive).add_directive(execute_directive).response
 
 class PlaySaidVideo(AbstractRequestHandler):
@@ -64,7 +62,7 @@ class PlaySaidVideo(AbstractRequestHandler):
             valueCap = int(handler_input.request_envelope.request.intent.slots["cardinal"].value[0])- 1
         videoItems = _load_apl_document("./sampleDataSource.json")
         videoItems = videoItems["fireTVVlogsData"]["properties"]["videoItems"]
-        
+
         apl_directive = RenderDocumentDirective(
             token="VideoPlayerToken",
             document=_load_apl_document("./videoPlayer.json"),
@@ -86,7 +84,7 @@ class PlaySaidVideo(AbstractRequestHandler):
                     command=MediaCommandType.play)
             ]
         )
-    
+
         return handler_input.response_builder.speak("playing").add_directive(apl_directive).add_directive(execute_directive).response
 
 class LaunchAPLVideoIntentHandler(AbstractRequestHandler):
@@ -104,7 +102,7 @@ class LaunchAPLVideoIntentHandler(AbstractRequestHandler):
 class LaunchVideoIntentHandler(AbstractRequestHandler):
     def can_handle(self, handler_input):
         return is_request_type("LaunchRequest")(handler_input)
-    
+
     def handle(self, handler_input):
         logger.info("In LaunchVideoIntentHandler")
         handler_input.response_builder.speak("welcome to the video demo! You can say: play normal video or play APL video").set_should_end_session(False)
@@ -113,7 +111,7 @@ class LaunchVideoIntentHandler(AbstractRequestHandler):
 class NormalVideoIntentHandler(AbstractRequestHandler):
     def can_handle(self, handler_input):
         return is_intent_name("playVideoApp")(handler_input)
-    
+
     def handle(self, handler_input):
         logger.info("In NormalVideoIntentHandler")
 

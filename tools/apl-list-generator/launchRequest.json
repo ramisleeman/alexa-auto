@@ -1,0 +1,188 @@
+{
+  "listTemplate1Metadata": {
+    "type": "object",
+    "objectId": "lt1Metadata",
+    "backgroundImage": {
+      "contentDescription": null,
+      "smallSourceUrl": null,
+      "largeSourceUrl": null,
+      "sources": [
+        {
+          "url": "https://d2o906d8ln7ui1.cloudfront.net/images/LT1_Background.png",
+          "size": "small",
+          "widthPixels": 0,
+          "heightPixels": 0
+        },
+        {
+          "url": "https://d2o906d8ln7ui1.cloudfront.net/images/LT1_Background.png",
+          "size": "large",
+          "widthPixels": 0,
+          "heightPixels": 0
+        }
+      ]
+    },
+    "title": "List of charging stations",
+    "logoUrl": "https://d2o906d8ln7ui1.cloudfront.net/images/cheeseskillicon.png"
+  },
+  "listTemplate1ListData": {
+    "type": "list",
+    "listId": "lt1Sample",
+    "totalNumberOfItems": 4,
+    "listPage": {
+      "listItems": [
+        {
+          "listItemIdentifier": "gouda",
+          "ordinalNumber": 1,
+          "textContent": {
+            "primaryText": {
+              "type": "PlainText",
+              "text": "gouda"
+            },
+            "secondaryText": {
+              "type": "PlainText",
+              "text": "distance: 1.2 miles"
+            },
+            "tertiaryText": {
+              "type": "PlainText",
+              "text": "Free"
+            }
+          },
+          "image": {
+            "contentDescription": null,
+            "smallSourceUrl": null,
+            "largeSourceUrl": null,
+            "sources": [
+              {
+                "url": "https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png",
+                "size": "small",
+                "widthPixels": 0,
+                "heightPixels": 0
+              },
+              {
+                "url": "https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png",
+                "size": "large",
+                "widthPixels": 0,
+                "heightPixels": 0
+              }
+            ]
+          },
+          "token": "gouda"
+        },
+        {
+          "listItemIdentifier": "knefeh",
+          "ordinalNumber": 2,
+          "textContent": {
+            "primaryText": {
+              "type": "PlainText",
+              "text": "knefeh"
+            },
+            "secondaryText": {
+              "type": "RichText",
+              "text": "distance: 2.2 miles"
+            },
+            "tertiaryText": {
+              "type": "PlainText",
+              "text": "$3 an hour"
+            }
+          },
+          "image": {
+            "contentDescription": null,
+            "smallSourceUrl": null,
+            "largeSourceUrl": null,
+            "sources": [
+              {
+                "url": "https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png",
+                "size": "small",
+                "widthPixels": 0,
+                "heightPixels": 0
+              },
+              {
+                "url": "https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png",
+                "size": "large",
+                "widthPixels": 0,
+                "heightPixels": 0
+              }
+            ]
+          },
+          "token": "cheddar"
+        },
+        {
+          "listItemIdentifier": "banana",
+          "ordinalNumber": 3,
+          "textContent": {
+            "primaryText": {
+              "type": "PlainText",
+              "text": "banana"
+            },
+            "secondaryText": {
+              "type": "RichText",
+              "text": "distance: 2.3 miles"
+            },
+            "tertiaryText": {
+              "type": "PlainText",
+              "text": "Free"
+            }
+          },
+          "image": {
+            "contentDescription": null,
+            "smallSourceUrl": null,
+            "largeSourceUrl": null,
+            "sources": [
+              {
+                "url": "https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png",
+                "size": "small",
+                "widthPixels": 0,
+                "heightPixels": 0
+              },
+              {
+                "url": "https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png",
+                "size": "large",
+                "widthPixels": 0,
+                "heightPixels": 0
+              }
+            ]
+          },
+          "token": "blue"
+        },
+        {
+          "listItemIdentifier": "zahle",
+          "ordinalNumber": 6,
+          "textContent": {
+            "primaryText": {
+              "type": "PlainText",
+              "text": "zahle"
+            },
+            "secondaryText": {
+              "type": "RichText",
+              "text": "distance: 3.2 miles"
+            },
+            "tertiaryText": {
+              "type": "PlainText",
+              "text": "$1 an hour"
+            }
+          },
+          "image": {
+            "contentDescription": null,
+            "smallSourceUrl": null,
+            "largeSourceUrl": null,
+            "sources": [
+              {
+                "url": "https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png",
+                "size": "small",
+                "widthPixels": 0,
+                "heightPixels": 0
+              },
+              {
+                "url": "https://d2o906d8ln7ui1.cloudfront.net/images/sm_gouda.png",
+                "size": "large",
+                "widthPixels": 0,
+                "heightPixels": 0
+              }
+            ]
+          },
+          "token": "parm"
+        }
+      ]
+    }
+  }
+}
