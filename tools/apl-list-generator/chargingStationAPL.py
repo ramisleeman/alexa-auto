@@ -1,10 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Tue Jul  2 10:24:33 2019
 
-@author: aborami
-"""
 import requests, json
 
 jsonFileName = "launchRequest.json"
