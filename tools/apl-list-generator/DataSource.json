@@ -1,0 +1,150 @@
+{
+    "listTemplate1Metadata": {
+        "type": "object",
+        "objectId": "lt1Metadata",
+        "backgroundImage": {
+            "contentDescription": null,
+            "smallSourceUrl": null,
+            "largeSourceUrl": null,
+            "sources": [
+                {
+                    "url": "TO BE FILLED",
+                    "size": "small",
+                    "widthPixels": 0,
+                    "heightPixels": 0
+                },
+                {
+                    "url": "TO BE FILLED",
+                    "size": "large",
+                    "widthPixels": 0,
+                    "heightPixels": 0
+                }
+            ]
+        },
+        "title": "TO BE FILLED",
+        "logoUrl": "TO BE FILLED"
+    },
+    "listTemplate1ListData": {
+        "type": "list",
+        "listId": "lt1Sample",
+        "totalNumberOfItems": 10,
+        "listPage": {
+            "listItems": [
+                {
+                    "listItemIdentifier": "result1",
+                    "ordinalNumber": 1,
+                    "textContent": {
+                        "primaryText": {
+                            "type": "PlainText",
+                            "text": "TO BE FILLED"
+                        },
+                        "secondaryText": {
+                            "type": "PlainText",
+                            "text": "TO BE FILLED"
+                        },
+                        "tertiaryText": {
+                            "type": "PlainText",
+                            "text": "TO BE FILLED"
+                        }
+                    },
+                    "image": {
+                        "contentDescription": null,
+                        "smallSourceUrl": null,
+                        "largeSourceUrl": null,
+                        "sources": [
+                            {
+                                "url": "TO BE FILLED",
+                                "size": "small",
+                                "widthPixels": 0,
+                                "heightPixels": 0
+                            },
+                            {
+                                "url": "TO BE FILLED",
+                                "size": "large",
+                                "widthPixels": 0,
+                                "heightPixels": 0
+                            }
+                        ]
+                    },
+                    "token": "result1"
+                },
+                {
+                    "listItemIdentifier": "result2",
+                    "ordinalNumber": 2,
+                    "textContent": {
+                        "primaryText": {
+                            "type": "PlainText",
+                            "text": "TO BE FILLED"
+                        },
+                        "secondaryText": {
+                            "type": "RichText",
+                            "text": "TO BE FILLED"
+                        },
+                        "tertiaryText": {
+                            "type": "PlainText",
+                            "text": "TO BE FILLED"
+                        }
+                    },
+                    "image": {
+                        "contentDescription": null,
+                        "smallSourceUrl": null,
+                        "largeSourceUrl": null,
+                        "sources": [
+                            {
+                                "url": "TO BE FILLED",
+                                "size": "small",
+                                "widthPixels": 0,
+                                "heightPixels": 0
+                            },
+                            {
+                                "url": "TO BE FILLED",
+                                "size": "large",
+                                "widthPixels": 0,
+                                "heightPixels": 0
+                            }
+                        ]
+                    },
+                    "token": "result2"
+                },
+                {
+                    "listItemIdentifier": "result3",
+                    "ordinalNumber": 3,
+                    "textContent": {
+                        "primaryText": {
+                            "type": "PlainText",
+                            "text": "TO BE FILLED"
+                        },
+                        "secondaryText": {
+                            "type": "RichText",
+                            "text": "TO BE FILLED"
+                        },
+                        "tertiaryText": {
+                            "type": "PlainText",
+                            "text": "TO BE FILLED"
+                        }
+                    },
+                    "image": {
+                        "contentDescription": null,
+                        "smallSourceUrl": null,
+                        "largeSourceUrl": null,
+                        "sources": [
+                            {
+                                "url": "TO BE FILLED",
+                                "size": "small",
+                                "widthPixels": 0,
+                                "heightPixels": 0
+                            },
+                            {
+                                "url": "TO BE FILLED",
+                                "size": "large",
+                                "widthPixels": 0,
+                                "heightPixels": 0
+                            }
+                        ]
+                    },
+                    "token": "result3"
+                }
+            ]
+        }
+    }
+}
